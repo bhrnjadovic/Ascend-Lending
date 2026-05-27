@@ -770,7 +770,7 @@ button {
 
 .hero__headline {
     font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 3.5vw, 3.2rem);
+    font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 700;
     color: var(--white);
     line-height: 1.12;
