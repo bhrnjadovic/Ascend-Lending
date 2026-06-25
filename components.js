@@ -1,360 +1,254 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cashflow loans for Australian businesses. Bridge the gap between income and expenses with fast, flexible short-term funding. Same-day approvals available." />
-  <title>Cashflow Loans for Business | Ascend Lending Partners</title>
-  <style>body{opacity:0;transition:opacity 0.2s}body.loaded{opacity:1}</style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../product-pages.css" />
-</head>
-<body>
-  <div id="navbar-placeholder"></div>
+/* ══════════════════════════════════════════════════════════════
+   ASCEND LENDING PARTNERS — components.js
+   Shared navbar + footer injection for all product pages
+══════════════════════════════════════════════════════════════ */
+(function () {
+    const inProducts = window.location.pathname.includes('/products/');
+    const B = inProducts ? '../' : './';
 
-  <!-- BREADCRUMB -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
+    // ── Navbar HTML ──────────────────────────────────────────────
+    const navHTML = `
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="${B}index.html" class="navbar__logo" aria-label="Ascend Lending Partners">
+      <img src="${B}logo-new.svg" alt="Ascend Lending Partners" class="navbar__logo-img" style="height:38px;width:auto;" />
+    </a>
+    <nav class="navbar__nav" aria-label="Primary navigation">
+      <div class="navbar__mega-wrapper">
+        <button class="navbar__mega-trigger" id="megaTrigger" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu">
+          Business Lending
+          <svg class="navbar__mega-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <a href="${B}index.html#process">How It Works</a>
+      <a href="${B}index.html#why-ascend">Why Ascend</a>
+      <a href="${B}index.html#contact">Contact</a>
+    </nav>
+    <a href="${B}index.html#contact" class="btn btn--navy navbar__cta">Get Started</a>
+    <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="navbar__mega" id="megaMenu" aria-hidden="true" role="navigation" aria-label="Business Lending products">
     <div class="container">
-      <a href="../index.html">Home</a>
-      <span class="breadcrumb__sep" aria-hidden="true">›</span>
-      <a href="index.html">Products</a>
-      <span class="breadcrumb__sep" aria-hidden="true">›</span>
-      <span>Cashflow Loans</span>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="prod-hero">
-    <div class="container prod-hero__inner">
-      <div class="prod-hero__content">
-        <p class="prod-hero__tag">Finance Product</p>
-        <h1>Cashflow Loans</h1>
-        <p class="prod-hero__sub">When the money is coming — but not yet here — cashflow lending keeps your business moving. Fast, flexible capital designed to bridge timing mismatches without disrupting your operations.</p>
-        <div class="prod-hero__actions">
-          <a href="../index.html#contact" class="btn btn--gold btn--lg">Apply Now</a>
-          <a href="#overview" class="btn btn--outline btn--lg">Learn More</a>
+      <div class="navbar__mega-inner">
+        <div class="navbar__mega-col">
+          <p class="navbar__mega-col-title">Business Loans</p>
+          <a href="${B}products/business-loans.html">Business Loans</a>
+          <a href="${B}products/small-business-loans.html">Small Business Loans</a>
+          <a href="${B}products/unsecured-business-loans.html">Unsecured Business Loans</a>
+          <a href="${B}products/secured-business-loans.html">Secured Business Loans</a>
+          <a href="${B}products/low-doc-loans.html">Low Doc Loans</a>
+          <a href="${B}products/high-doc-loans.html">Full Doc Loans</a>
         </div>
-      </div>
-      <div class="prod-hero__stats">
-        <div class="prod-stat">
-          <span class="prod-stat__value">Same-Day</span>
-          <span class="prod-stat__label">Decisions Available</span>
+        <div class="navbar__mega-col">
+          <p class="navbar__mega-col-title">Cash Flow & Working Capital</p>
+          <a href="${B}products/business-line-of-credit.html">Business Line of Credit</a>
+          <a href="${B}products/cashflow-loans.html">Cashflow Loans</a>
+          <a href="${B}products/working-capital-loans.html">Working Capital Loans</a>
+          <a href="${B}products/invoice-finance.html">Invoice Finance</a>
         </div>
-        <div class="prod-stat">
-          <span class="prod-stat__value">Short Terms</span>
-          <span class="prod-stat__label">3–24 Months</span>
+        <div class="navbar__mega-col">
+          <p class="navbar__mega-col-title">Specialist Finance</p>
+          <a href="${B}products/equipment-finance.html">Equipment Finance</a>
+          <a href="${B}products/trade-finance.html">Trade Finance</a>
+          <a href="${B}products/ato-tax-debt-loans.html">ATO Tax Debt Finance</a>
+          <a href="${B}products/short-term-business-loans.html">Short Term Business Loans</a>
         </div>
-        <div class="prod-stat">
-          <span class="prod-stat__value">Flexible</span>
-          <span class="prod-stat__label">Repayment Options</span>
+        <div class="navbar__mega-col">
+          <p class="navbar__mega-col-title">Not sure where to start?</p>
+          <p style="font-size:0.8rem;color:var(--steel);line-height:1.65;margin-bottom:1rem;">Talk to a specialist who understands complex commercial lending.</p>
+          <a href="${B}index.html#contact" class="btn btn--navy">Talk to a Specialist</a>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- OVERVIEW -->
-  <section class="prod-overview" id="overview">
-    <div class="container prod-overview__inner">
-      <div class="prod-overview__left">
-        <p class="section-eyebrow">What It Is</p>
-        <h2>Bridge the Gap. Keep Moving.</h2>
-        <p>A cashflow loan addresses one of the most common and damaging problems in business finance: the timing mismatch between when money goes out and when it comes in. Revenue may be predictable and strong, but if your expenses fall in a window before your income arrives — payroll, rent, supplier payments, tax — the cash shortfall is real and immediate.</p>
-        <p>Cashflow lending is a short-term injection of capital, structured specifically around these timing gaps. It's not designed to fund long-term capital investment — it's designed to keep the engine running without interruption while the business cycle completes. Fast to access, structured for short-term repayment, and assessed on cash flow rather than balance sheet assets.</p>
-      </div>
-      <div class="prod-overview__right">
-        <div class="prod-stat-card">
-          <span class="prod-stat-card__value">$10K–$500K</span>
-          <span class="prod-stat-card__label">Loan Range</span>
-        </div>
-        <div class="prod-stat-card">
-          <span class="prod-stat-card__value">3–24 Months</span>
-          <span class="prod-stat-card__label">Term Options</span>
-        </div>
-        <div class="prod-stat-card">
-          <span class="prod-stat-card__value">Same-Day</span>
-          <span class="prod-stat-card__label">Decision Available</span>
-        </div>
-        <div class="prod-stat-card">
-          <span class="prod-stat-card__value">Repeat</span>
-          <span class="prod-stat-card__label">Facility Available</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section class="prod-benefits">
-    <div class="container">
-      <div class="prod-section-header">
-        <p class="section-eyebrow">Why It Works</p>
-        <h2>Key Benefits</h2>
-        <p>Cashflow lending is built for speed and simplicity — the qualities that matter most when your business needs capital in a tight window.</p>
-      </div>
-      <div class="prod-benefits__grid">
-        <div class="benefit-card">
-          <div class="benefit-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+  </div>
+  <div class="navbar__mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-accordion">
+      <button class="mobile-accordion__trigger" id="mobileAccordionTrigger" aria-expanded="false">
+        Business Lending
+        <svg class="mobile-accordion__chevron" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="mobile-accordion__panel" id="mobileAccordionPanel">
+        <div class="mobile-accordion__grid">
+          <div>
+            <p class="mobile-accordion__col-title">Business Loans</p>
+            <a href="${B}products/business-loans.html" class="mobile-sub-link">Business Loans</a>
+            <a href="${B}products/small-business-loans.html" class="mobile-sub-link">Small Business</a>
+            <a href="${B}products/unsecured-business-loans.html" class="mobile-sub-link">Unsecured Loans</a>
+            <a href="${B}products/secured-business-loans.html" class="mobile-sub-link">Secured Loans</a>
+            <a href="${B}products/low-doc-loans.html" class="mobile-sub-link">Low Doc Loans</a>
+            <a href="${B}products/high-doc-loans.html" class="mobile-sub-link">Full Doc Loans</a>
           </div>
-          <h3>Fills Cash Flow Timing Gaps</h3>
-          <p>Designed precisely for the gap between when expenses fall due and when revenue lands. Whether it's a 30-day client payment cycle, a quarterly BAS, or seasonal downtime, cashflow lending bridges the gap without disrupting operations.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10" stroke="#D4AF37" stroke-width="1.6"/>
-              <path d="M12 6v6l3 3" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Fast Same-Day Decisions</h3>
-          <p>When a timing gap hits, you need capital now — not next week. Cashflow lenders on our panel can issue decisions within hours and fund the same business day for qualifying applications.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="8" width="18" height="13" rx="2" stroke="#D4AF37" stroke-width="1.6"/>
-              <path d="M8 8V6a4 4 0 018 0v2" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round"/>
-              <circle cx="12" cy="14" r="2" stroke="#D4AF37" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3>Short-Term Commitment</h3>
-          <p>Terms from 3 to 24 months mean you're not locked into a multi-year facility for a short-term need. Once the cash flow timing resolves, repay and the obligation is gone — with no lingering impact on your balance sheet.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section class="prod-for">
-    <div class="container">
-      <div class="prod-section-header">
-        <p class="section-eyebrow">Ideal For</p>
-        <h2>Who This Product Suits</h2>
-        <p>Cashflow lending suits any business where revenue and expense timing regularly misalign — it's one of the most common working capital problems in Australian SMEs.</p>
-      </div>
-      <div class="prod-for__grid">
-        <div class="for-card">
-          <div class="for-card__icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <h3>Seasonal Businesses</h3>
-          <p>Tourism, retail, agriculture, events, and other businesses where revenue peaks in specific periods but costs continue year-round — requiring capital to bridge the off-season gap until income returns.</p>
-        </div>
-        <div class="for-card">
-          <div class="for-card__icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h3>Businesses Awaiting Payment</h3>
-          <p>Companies waiting on outstanding invoices from clients — particularly those with 30–90 day payment terms — that need to meet operational expenses before those funds land.</p>
-        </div>
-        <div class="for-card">
-          <div class="for-card__icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-          <h3>Rapidly Growing SMEs</h3>
-          <p>Businesses growing faster than their cash flow can support — where more customers means more upfront costs before the revenue from those customers is collected.</p>
-        </div>
-        <div class="for-card">
-          <div class="for-card__icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <h3>Project-Based Operators</h3>
-          <p>Builders, engineers, IT firms, and other project-based businesses that incur significant costs during project delivery but are paid at project completion — creating predictable but significant cash flow gaps.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES & ELIGIBILITY -->
-  <section class="prod-features">
-    <div class="container prod-features__inner">
-      <div>
-        <p class="section-eyebrow">What's Included</p>
-        <h2>Loan Features</h2>
-        <p class="prod-features__intro">Cashflow loans through Ascend Lending Partners are structured for fast access and flexible repayment — matching the short-term nature of the gap they're designed to bridge.</p>
-        <ul class="feat-list">
-          <li>Loan amounts from $10K to $500K</li>
-          <li>Terms from 3 to 24 months</li>
-          <li>Daily, weekly, or monthly repayment options</li>
-          <li>Revenue-based assessment — cash flow drives the decision</li>
-          <li>Early repayment with flexibility on most products</li>
-          <li>Repeat facility available — re-draw when the next gap arises</li>
-          <li>Unsecured options available — no property required</li>
-        </ul>
-      </div>
-      <div>
-        <p class="section-eyebrow" style="color:var(--gold)">Requirements</p>
-        <h2 style="color:var(--white);font-family:var(--font-heading);font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:700;line-height:1.2;margin-bottom:0.75rem">Eligibility Criteria</h2>
-        <div class="elig-list">
-          <div class="elig-item">
-            <span class="elig-item__label">ABN</span>
-            <span class="elig-item__value">Active for 6+ months</span>
-          </div>
-          <div class="elig-item">
-            <span class="elig-item__label">Monthly Revenue</span>
-            <span class="elig-item__value">$5,000+ per month</span>
-          </div>
-          <div class="elig-item">
-            <span class="elig-item__label">Bank Statements</span>
-            <span class="elig-item__value">6 months required</span>
-          </div>
-          <div class="elig-item">
-            <span class="elig-item__label">Cash Flow</span>
-            <span class="elig-item__value">Demonstrated positive trend</span>
-          </div>
-          <div class="elig-item">
-            <span class="elig-item__label">Credit</span>
-            <span class="elig-item__value">No active bankruptcies</span>
+          <div>
+            <p class="mobile-accordion__col-title">Cash Flow</p>
+            <a href="${B}products/business-line-of-credit.html" class="mobile-sub-link">Line of Credit</a>
+            <a href="${B}products/cashflow-loans.html" class="mobile-sub-link">Cashflow Loans</a>
+            <a href="${B}products/working-capital-loans.html" class="mobile-sub-link">Working Capital</a>
+            <a href="${B}products/invoice-finance.html" class="mobile-sub-link">Invoice Finance</a>
+            <p class="mobile-accordion__col-title" style="margin-top:0.75rem">Specialist</p>
+            <a href="${B}products/equipment-finance.html" class="mobile-sub-link">Equipment Finance</a>
+            <a href="${B}products/trade-finance.html" class="mobile-sub-link">Trade Finance</a>
+            <a href="${B}products/ato-tax-debt-loans.html" class="mobile-sub-link">ATO Tax Debt</a>
+            <a href="${B}products/short-term-business-loans.html" class="mobile-sub-link">Short Term Loans</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+    <a href="${B}index.html#process" class="mobile-link">How It Works</a>
+    <a href="${B}index.html#why-ascend" class="mobile-link">Why Ascend</a>
+    <a href="${B}index.html#contact" class="mobile-link">Contact</a>
+    <a href="${B}index.html#contact" class="btn btn--navy mobile-cta">Get Started</a>
+  </div>
+</header>`;
 
-  <!-- HOW TO APPLY -->
-  <section class="process prod-process" id="apply">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">Simple Process</p>
-        <h2 class="section-title">Apply in <span class="text-gold">4 Simple Steps.</span></h2>
-        <span class="section-rule" aria-hidden="true"></span>
-        <p class="section-sub">We manage everything from first enquiry to final settlement.</p>
+    // ── Footer HTML ──────────────────────────────────────────────
+    const footerHTML = `
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="${B}index.html" class="footer__logo" aria-label="Ascend Lending Partners home">
+        <img src="${B}logo-footer.svg" alt="Ascend Lending Partners" class="footer__logo-img" style="height:38px;width:auto;" />
+      </a>
+      <p class="footer__tagline">Lending with Precision.</p>
+      <p class="footer__credit-rep">Australian Credit Licence No. XXXXXX</p>
+    </div>
+    <div class="footer__links">
+      <div class="footer__col">
+        <h4 class="footer__col-title">Business Finance</h4>
+        <a href="${B}products/business-loans.html">Business Loans</a>
+        <a href="${B}products/business-line-of-credit.html">Line of Credit</a>
+        <a href="${B}products/unsecured-business-loans.html">Unsecured Loans</a>
+        <a href="${B}products/secured-business-loans.html">Secured Loans</a>
+        <a href="${B}products/small-business-loans.html">Small Business Loans</a>
       </div>
-      <div class="process__steps">
-        <div class="process__step">
-          <div class="process__step-number" aria-hidden="true">01</div>
-          <div class="process__step-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 28 Q20 8 30 28" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round" fill="none"/><circle cx="20" cy="16" r="3" stroke="#D4AF37" stroke-width="1.5"/><path d="M10 32h20" stroke="#D4AF37" stroke-width="1.2"/></svg>
-          </div>
-          <h3 class="process__step-title">Enquire</h3>
-          <p class="process__step-desc">Submit your details online or call us. We respond within 2 business hours.</p>
-        </div>
-        <div class="process__connector" aria-hidden="true"></div>
-        <div class="process__step">
-          <div class="process__step-number" aria-hidden="true">02</div>
-          <div class="process__step-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="10" width="24" height="22" rx="2" stroke="#D4AF37" stroke-width="1.6"/><path d="M14 18h12M14 23h8" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="5" fill="#0A1325" stroke="#D4AF37" stroke-width="1.5"/><path d="M26 12l1.5 1.5L30 10.5" stroke="#D4AF37" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="process__step-title">Assess</h3>
-          <p class="process__step-desc">We review your scenario, financials, and goals to map the right structure.</p>
-        </div>
-        <div class="process__connector" aria-hidden="true"></div>
-        <div class="process__step">
-          <div class="process__step-number" aria-hidden="true">03</div>
-          <div class="process__step-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="12" stroke="#D4AF37" stroke-width="1.6"/><path d="M14 20h12M20 14v12" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="process__step-title">Structure</h3>
-          <p class="process__step-desc">We architect the deal and present best-fit options from 60+ lenders.</p>
-        </div>
-        <div class="process__connector" aria-hidden="true"></div>
-        <div class="process__step">
-          <div class="process__step-number" aria-hidden="true">04</div>
-          <div class="process__step-icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="24" height="18" rx="2" stroke="#D4AF37" stroke-width="1.6"/><path d="M14 22l4 4 8-8" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10h12" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="process__step-title">Fund</h3>
-          <p class="process__step-desc">Approval managed end-to-end. Funds typically in your account within 24–48 hours of settlement.</p>
-        </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Specialist Finance</h4>
+        <a href="${B}products/equipment-finance.html">Equipment Finance</a>
+        <a href="${B}products/invoice-finance.html">Invoice Finance</a>
+        <a href="${B}products/trade-finance.html">Trade Finance</a>
+        <a href="${B}products/ato-tax-debt-loans.html">ATO Tax Debt</a>
+        <a href="${B}products/cashflow-loans.html">Cashflow Loans</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Company</h4>
+        <a href="${B}index.html#why-ascend">About Us</a>
+        <a href="${B}index.html#process">How It Works</a>
+        <a href="${B}index.html#contact">Contact</a>
+        <a href="${B}privacy-policy.html">Privacy Policy</a>
+        <a href="${B}terms-of-service.html">Terms of Service</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Contact</h4>
+        <a href="tel:+61409380558">+61 409 380 558</a>
+        <a href="mailto:hello@ascendlending.com.au">hello@ascendlending.com.au</a>
+        <span>Sydney, NSW</span>
+        <span>Australia-Wide</span>
       </div>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="prod-faq">
-    <div class="container">
-      <div class="prod-section-header">
-        <p class="section-eyebrow">Common Questions</p>
-        <h2>Frequently Asked Questions</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How is a cashflow loan different from a bank overdraft?
-          </button>
-          <div class="faq-answer"><p>A bank overdraft is a facility attached to your existing bank account that allows it to go negative up to an approved limit. It's a longstanding product, but approval requires a strong bank relationship, is often tied to property security, and can be slow to establish. A cashflow loan is a standalone facility — faster to access, available through non-bank lenders, and not dependent on your existing bank relationship. For businesses that need capital quickly or who don't have a strong property-secured banking relationship, a cashflow loan is typically the faster and more accessible option.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How are repayments structured?
-          </button>
-          <div class="faq-answer"><p>Cashflow loan repayments are typically structured as daily, weekly, or monthly automatic debits from your business account. Daily repayments are common — keeping individual amounts small and spreading the repayment cost across the loan term. We'll match you to a repayment frequency that aligns with your revenue cycle — ensuring repayments fall when cash is available, not when your account is at its lowest point.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How fast can I access the funds?
-          </button>
-          <div class="faq-answer"><p>Cashflow loans are among the fastest products in the commercial lending market. Same-day decisions are available for qualifying applications, with funding often completed the same business day or the following morning. The key driver of speed is documentation — having 6 months of bank statements ready to submit is typically all that's needed to trigger a fast assessment. We'll guide you through exactly what to prepare before submission.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What are the eligibility requirements?
-          </button>
-          <div class="faq-answer"><p>The key requirements are an active ABN, monthly revenue of at least $5,000, 6 months of bank statements showing a positive cash flow trend, and no active insolvency proceedings. Most cashflow lenders use bank statement analysis as their primary income assessment tool — the health and consistency of your cash flow picture is the most important factor in their decision.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Are cashflow loan rates high?
-          </button>
-          <div class="faq-answer"><p>Cashflow loan rates are higher than long-term secured business loans — reflecting the shorter term, faster access, and unsecured nature of the product. The true cost question is whether the cost of the loan is less than the cost of the cash flow problem it solves: late supplier payments, payroll disruption, missed opportunities, or ATO penalties. In most scenarios where cashflow lending is the right tool, the cost of the capital is well justified by the operational continuity it provides.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Can I re-borrow after I've repaid?
-          </button>
-          <div class="faq-answer"><p>Yes. Many cashflow lenders offer repeat facilities — meaning once you've successfully repaid a loan, you can re-draw when the next gap arises, often with a faster approval process the second time. Some lenders establish a standing facility that can be drawn and repaid repeatedly, functioning similarly to a line of credit for cashflow purposes. We'll identify the best repeat access structure for your business profile.</p></div>
-        </div>
-      </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>&copy; 2025 Ascend Lending Partners. All rights reserved.</p>
+      <p class="footer__disclaimer">General information only. Not financial advice. Credit subject to lender assessment and approval criteria. Ascend Lending Partners Pty Ltd — Australian Credit Licence No. XXXXXX.</p>
     </div>
-  </section>
+  </div>
+</footer>`;
 
-  <!-- RELATED PRODUCTS -->
-  <section class="prod-related">
-    <div class="container">
-      <div class="prod-section-header">
-        <p class="section-eyebrow">Explore More</p>
-        <h2>Related Finance Products</h2>
-      </div>
-      <div class="prod-related__grid">
-        <a href="working-capital-loans.html" class="related-card">
-          <span class="related-card__label">Finance Product</span>
-          <span class="related-card__title">Working Capital Loans</span>
-          <span class="related-card__arrow">→</span>
-        </a>
-        <a href="business-line-of-credit.html" class="related-card">
-          <span class="related-card__label">Finance Product</span>
-          <span class="related-card__title">Business Line of Credit</span>
-          <span class="related-card__arrow">→</span>
-        </a>
-        <a href="invoice-finance.html" class="related-card">
-          <span class="related-card__label">Finance Product</span>
-          <span class="related-card__title">Invoice Finance</span>
-          <span class="related-card__arrow">→</span>
-        </a>
-        <a href="short-term-business-loans.html" class="related-card">
-          <span class="related-card__label">Finance Product</span>
-          <span class="related-card__title">Short Term Business Loans</span>
-          <span class="related-card__arrow">→</span>
-        </a>
-        <a href="unsecured-business-loans.html" class="related-card">
-          <span class="related-card__label">Finance Product</span>
-          <span class="related-card__title">Unsecured Business Loans</span>
-          <span class="related-card__arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+    // ── Inject ───────────────────────────────────────────────────
+    const navPh = document.getElementById('navbar-placeholder');
+    if (navPh) navPh.outerHTML = navHTML;
+    const ftPh = document.getElementById('footer-placeholder');
+    if (ftPh) ftPh.outerHTML = footerHTML;
 
-  <!-- CTA -->
-  <section class="prod-cta">
-    <div class="container">
-      <p class="prod-cta__eyebrow">Ready to Move?</p>
-      <h2>Your Cash Flow Gap Has a Solution<br /><span class="text-gold">Let's Get Started.</span></h2>
-      <p class="prod-cta__sub">Don't let timing disrupt an otherwise strong business — let's bridge the gap.</p>
-      <div class="prod-cta__actions">
-        <a href="../index.html#contact" class="btn btn--gold btn--lg">Enquire Now</a>
-        <a href="tel:1300000000" class="btn btn--outline-light btn--lg">Call Us Direct</a>
-      </div>
-    </div>
-  </section>
+    // ── Mega menu ────────────────────────────────────────────────
+    (function () {
+        const trigger = document.getElementById('megaTrigger');
+        const panel   = document.getElementById('megaMenu');
+        const wrapper = trigger && trigger.closest('.navbar__mega-wrapper');
+        if (!trigger || !panel) return;
+        let hideTimer;
+        const openMenu  = () => { clearTimeout(hideTimer); panel.classList.add('is-open'); trigger.setAttribute('aria-expanded','true'); panel.setAttribute('aria-hidden','false'); };
+        const closeMenu = () => { hideTimer = setTimeout(() => { panel.classList.remove('is-open'); trigger.setAttribute('aria-expanded','false'); panel.setAttribute('aria-hidden','true'); }, 120); };
+        wrapper.addEventListener('mouseenter', openMenu);
+        wrapper.addEventListener('mouseleave', closeMenu);
+        panel.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+        panel.addEventListener('mouseleave', closeMenu);
+        trigger.addEventListener('click', () => panel.classList.contains('is-open') ? closeMenu() : openMenu());
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel.classList.contains('is-open')) { closeMenu(); trigger.focus(); } });
+        document.addEventListener('click', (e) => { if (!panel.contains(e.target) && !wrapper.contains(e.target)) closeMenu(); });
+    })();
 
-  <div id="footer-placeholder"></div>
-  <script src="../components.js"></script>
-</body>
-</html>
+    // ── Mobile accordion ─────────────────────────────────────────
+    const mAccTrigger = document.getElementById('mobileAccordionTrigger');
+    const mAccPanel   = document.getElementById('mobileAccordionPanel');
+    if (mAccTrigger && mAccPanel) {
+        mAccTrigger.addEventListener('click', () => {
+            const isOpen = mAccPanel.classList.contains('is-open');
+            mAccPanel.classList.toggle('is-open', !isOpen);
+            mAccTrigger.classList.toggle('is-open', !isOpen);
+            mAccTrigger.setAttribute('aria-expanded', String(!isOpen));
+        });
+    }
+
+    // ── Navbar JS ────────────────────────────────────────────────
+    const navbar  = document.getElementById('navbar');
+    const burger  = document.getElementById('hamburger');
+    const mobMenu = document.getElementById('mobileMenu');
+
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('navbar--scrolled', window.scrollY > 60);
+        }, { passive: true });
+    }
+    if (burger && mobMenu) {
+        burger.addEventListener('click', () => {
+            const open = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', String(!open));
+            mobMenu.setAttribute('aria-hidden', String(open));
+            burger.classList.toggle('is-open', !open);
+            mobMenu.classList.toggle('is-open', !open);
+        });
+        document.querySelectorAll('.mobile-link, .mobile-cta').forEach(l => {
+            l.addEventListener('click', () => {
+                burger.setAttribute('aria-expanded', 'false');
+                mobMenu.setAttribute('aria-hidden', 'true');
+                burger.classList.remove('is-open');
+                mobMenu.classList.remove('is-open');
+            });
+        });
+    }
+
+    // ── Smooth scroll ────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) {
+                e.preventDefault();
+                window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // ── FAQ accordion ────────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const wasOpen = item.classList.contains('is-open');
+            document.querySelectorAll('.faq-item.is-open').forEach(i => i.classList.remove('is-open'));
+            if (!wasOpen) item.classList.add('is-open');
+        });
+    });
+
+    // ── Scroll-reveal ────────────────────────────────────────────
+    const revealSel = '.benefit-card,.for-card,.faq-item,.related-card,.elig-item,.process__step,.why-card,.trust-stat,.prod-stat-card';
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(revealSel).forEach(el => obs.observe(el));
+
+    // ── Loaded ───────────────────────────────────────────────────
+    document.body.classList.add('loaded');
+})();
