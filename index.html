@@ -1275,7 +1275,27 @@
                 submitBtn.querySelector(".btn-text").style.display = "none";
                 submitBtn.querySelector(".btn-loading").style.display = "inline-flex";
 
-                await new Promise(resolve => setTimeout(resolve, 1800));
+                const formData = {
+                    firstName:  document.getElementById("firstName").value,
+                    lastName:   document.getElementById("lastName").value,
+                    email:      document.getElementById("email").value,
+                    phone:      document.getElementById("phone").value,
+                    loanType:   document.getElementById("loanType").value,
+                    loanAmount: "$" + Number(document.getElementById("loanAmountSlider").value).toLocaleString(),
+                    message:    document.getElementById("message").value,
+                };
+                const res = await fetch("https://formspree.io/f/mpqvzqoy", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(formData),
+                });
+                if (!res.ok) {
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector(".btn-text").style.display = "inline";
+                    submitBtn.querySelector(".btn-loading").style.display = "none";
+                    alert("Something went wrong. Please try again or call us directly.");
+                    return;
+                }
 
                 document.getElementById("step3").style.display = "none";
                 formSuccess.style.display = "flex";
