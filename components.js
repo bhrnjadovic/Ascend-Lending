@@ -54,6 +54,13 @@
           <a href="${B}products/trade-finance.html">Trade Finance</a>
           <a href="${B}products/ato-tax-debt-loans.html">ATO Tax Debt Finance</a>
           <a href="${B}products/short-term-business-loans.html">Short Term Business Loans</a>
+          <a href="${B}products/bad-credit-business-loans.html">Bad Credit Business Loans</a>
+        </div>
+        <div class="navbar__mega-col">
+          <p class="navbar__mega-col-title">Property Finance</p>
+          <a href="${B}products/home-loans.html">Home Loans</a>
+          <a href="${B}products/commercial-property-loans.html">Commercial Property</a>
+          <a href="${B}products/bridging-finance.html">Bridging Finance</a>
         </div>
         <div class="navbar__mega-col">
           <p class="navbar__mega-col-title">Not sure where to start?</p>
@@ -91,6 +98,11 @@
             <a href="${B}products/trade-finance.html" class="mobile-sub-link">Trade Finance</a>
             <a href="${B}products/ato-tax-debt-loans.html" class="mobile-sub-link">ATO Tax Debt</a>
             <a href="${B}products/short-term-business-loans.html" class="mobile-sub-link">Short Term Loans</a>
+            <a href="${B}products/bad-credit-business-loans.html" class="mobile-sub-link">Bad Credit Loans</a>
+            <p class="mobile-accordion__col-title" style="margin-top:0.75rem">Property</p>
+            <a href="${B}products/home-loans.html" class="mobile-sub-link">Home Loans</a>
+            <a href="${B}products/commercial-property-loans.html" class="mobile-sub-link">Commercial Property</a>
+            <a href="${B}products/bridging-finance.html" class="mobile-sub-link">Bridging Finance</a>
           </div>
         </div>
       </div>
@@ -142,7 +154,7 @@
   <div class="footer__bottom">
     <div class="container footer__bottom-inner">
       <p>&copy; 2025 Ascend Lending Partners. All rights reserved.</p>
-      <p class="footer__disclaimer">General information only. Not financial advice. Credit subject to lender assessment and approval criteria. Ascend Lending Partners Pty Ltd — Australian Credit Licence No. XXXXXX.</p>
+      <p class="footer__disclaimer">General information only. Not financial advice. Credit subject to lender assessment and approval criteria. Ascend Lending Partners operates as a referral introducer only and does not hold an Australian Credit Licence. We may receive a referral fee from lenders upon settlement.</p>
     </div>
   </div>
 </footer>`;
