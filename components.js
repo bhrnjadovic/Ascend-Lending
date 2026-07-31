@@ -111,7 +111,6 @@
         <img src="${B}logo-footer.svg" alt="Ascend Lending Partners" class="footer__logo-img" style="height:38px;width:auto;" />
       </a>
       <p class="footer__tagline">Lending with Precision.</p>
-      <p class="footer__credit-rep">Australian Credit Licence No. XXXXXX</p>
     </div>
     <div class="footer__links">
       <div class="footer__col">
@@ -119,16 +118,9 @@
         <a href="${B}products/business-loans.html">Business Loans</a>
         <a href="${B}products/business-line-of-credit.html">Line of Credit</a>
         <a href="${B}products/unsecured-business-loans.html">Unsecured Loans</a>
-        <a href="${B}products/secured-business-loans.html">Secured Loans</a>
-        <a href="${B}products/small-business-loans.html">Small Business Loans</a>
-      </div>
-      <div class="footer__col">
-        <h4 class="footer__col-title">Specialist Finance</h4>
         <a href="${B}products/equipment-finance.html">Equipment Finance</a>
         <a href="${B}products/invoice-finance.html">Invoice Finance</a>
-        <a href="${B}products/trade-finance.html">Trade Finance</a>
         <a href="${B}products/ato-tax-debt-loans.html">ATO Tax Debt</a>
-        <a href="${B}products/cashflow-loans.html">Cashflow Loans</a>
       </div>
       <div class="footer__col">
         <h4 class="footer__col-title">Company</h4>
@@ -141,9 +133,9 @@
       <div class="footer__col">
         <h4 class="footer__col-title">Contact</h4>
         <a href="tel:+61409380558">+61 409 380 558</a>
-        <a href="mailto:hello@ascendlending.com.au">hello@ascendlending.com.au</a>
-        <span>Sydney, NSW</span>
-        <span>Australia-Wide</span>
+        <a href="mailto:admin@ascendlending.com.au">admin@ascendlending.com.au</a>
+        <span>Level 17, 175 Pitt Street</span>
+        <span>Sydney, NSW 2000</span>
       </div>
     </div>
   </div>
