@@ -2065,7 +2065,7 @@ button {
     }
     .navbar__search-btn {
         position: absolute;
-        right: 52px;
+        right: 60px;
         top: 50%;
         transform: translateY(-50%);
         margin: 0;
