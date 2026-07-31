@@ -2694,4 +2694,11 @@ button {
     .form-row {
         grid-template-columns: 1fr;
     }
+    .contact__inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .contact__left {
+        position: static;
+    }
 }
