@@ -16,7 +16,7 @@
     <nav class="navbar__nav" aria-label="Primary navigation">
       <div class="navbar__mega-wrapper">
         <button class="navbar__mega-trigger" id="megaTrigger" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu">
-          Business Lending
+          Our Products
           <svg class="navbar__mega-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -25,11 +25,14 @@
       <a href="${B}index.html#contact">Contact</a>
     </nav>
     <a href="${B}index.html#contact" class="btn btn--navy navbar__cta">Get Started</a>
+    <button class="navbar__search-btn" id="searchBtn" aria-label="Search" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
     <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="navbar__mega" id="megaMenu" aria-hidden="true" role="navigation" aria-label="Business Lending products">
+  <div class="navbar__mega" id="megaMenu" aria-hidden="true" role="navigation" aria-label="Our Products products">
     <div class="container">
       <div class="navbar__mega-inner">
         <div class="navbar__mega-col">
@@ -73,7 +76,7 @@
   <div class="navbar__mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-accordion">
       <button class="mobile-accordion__trigger" id="mobileAccordionTrigger" aria-expanded="false">
-        Business Lending
+        Our Products
         <svg class="mobile-accordion__chevron" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="mobile-accordion__panel" id="mobileAccordionPanel">
@@ -165,6 +168,33 @@
     const ftPh = document.getElementById('footer-placeholder');
     if (ftPh) ftPh.outerHTML = footerHTML;
 
+    // ── Search overlay inject ────────────────────────────────────
+    const searchOverlay = document.createElement('div');
+    searchOverlay.id = 'searchOverlay';
+    searchOverlay.className = 'search-overlay';
+    searchOverlay.setAttribute('aria-hidden', 'true');
+    searchOverlay.setAttribute('role', 'dialog');
+    searchOverlay.setAttribute('aria-label', 'Site search');
+    searchOverlay.innerHTML = `
+      <div class="search-overlay__backdrop" id="searchBackdrop"></div>
+      <div class="search-overlay__panel">
+        <div class="search-overlay__header">
+          <div class="search-overlay__input-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" class="search-overlay__input" placeholder="Search for a product or topic..." autocomplete="off" spellcheck="false" />
+            <button class="search-overlay__clear" id="searchClear" aria-label="Clear search" style="display:none">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <button class="search-overlay__close" id="searchClose" aria-label="Close search">ESC</button>
+        </div>
+        <div class="search-overlay__results" id="searchResults">
+          <p class="search-overlay__hint">Start typing to search pages and products…</p>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(searchOverlay);
+
     // ── Mega menu ────────────────────────────────────────────────
     (function () {
         const trigger = document.getElementById('megaTrigger');
@@ -252,6 +282,125 @@
         });
     }, { threshold: 0.1 });
     document.querySelectorAll(revealSel).forEach(el => obs.observe(el));
+
+    // ── Search ───────────────────────────────────────────────────
+    (function () {
+        const BASE = (function() {
+            const scripts = document.getElementsByTagName('script');
+            const src = scripts[scripts.length - 1].src;
+            return src.includes('/products/') ? '../' : '';
+        })();
+
+        const PAGES = [
+            { title: 'Business Loans', desc: 'Commercial loans for expansion, acquisition, equipment and more.', url: BASE + 'products/business-loans.html', tags: 'business loan commercial finance borrow capital' },
+            { title: 'Business Line of Credit', desc: 'Flexible revolving credit facility for ongoing business needs.', url: BASE + 'products/business-line-of-credit.html', tags: 'line of credit revolving facility draw down' },
+            { title: 'Unsecured Business Loans', desc: 'No property security required — approved on business performance.', url: BASE + 'products/unsecured-business-loans.html', tags: 'unsecured no security fast approval' },
+            { title: 'Secured Business Loans', desc: 'Asset-backed lending for larger amounts and better rates.', url: BASE + 'products/secured-business-loans.html', tags: 'secured property asset backed collateral' },
+            { title: 'Small Business Loans', desc: 'Finance tailored for small business operators and sole traders.', url: BASE + 'products/small-business-loans.html', tags: 'small business SME sole trader startup' },
+            { title: 'Low Doc Loans', desc: 'Minimal documentation — ideal for self-employed and ABN holders.', url: BASE + 'products/low-doc-loans.html', tags: 'low doc self employed ABN no financials' },
+            { title: 'High Doc Loans', desc: 'Full documentation loans for the most competitive rates.', url: BASE + 'products/high-doc-loans.html', tags: 'full doc high doc financials tax returns' },
+            { title: 'Short Term Business Loans', desc: 'Fast funding for urgent or short-term business requirements.', url: BASE + 'products/short-term-business-loans.html', tags: 'short term urgent fast quick same day' },
+            { title: 'Cashflow Loans', desc: 'Bridge cash flow gaps and keep operations running smoothly.', url: BASE + 'products/cashflow-loans.html', tags: 'cashflow working capital gap bridge' },
+            { title: 'Working Capital Loans', desc: 'Fund day-to-day operations and manage seasonal fluctuations.', url: BASE + 'products/working-capital-loans.html', tags: 'working capital operations seasonal stock' },
+            { title: 'Invoice Finance', desc: 'Unlock cash tied up in outstanding invoices immediately.', url: BASE + 'products/invoice-finance.html', tags: 'invoice debtor factoring accounts receivable' },
+            { title: 'Equipment Finance', desc: 'Fund machinery, vehicles and equipment without cash outlay.', url: BASE + 'products/equipment-finance.html', tags: 'equipment machinery vehicle truck asset' },
+            { title: 'Trade Finance', desc: 'Finance for importing, exporting and international trade.', url: BASE + 'products/trade-finance.html', tags: 'trade import export international supply' },
+            { title: 'ATO Tax Debt Finance', desc: 'Clear ATO debt fast and avoid default listings.', url: BASE + 'products/ato-tax-debt-loans.html', tags: 'ATO tax debt payment plan overdue BAS GST' },
+            { title: 'Bad Credit Business Loans', desc: 'Finance for businesses with defaults, judgments or complex credit.', url: BASE + 'products/bad-credit-business-loans.html', tags: 'bad credit default judgment declined bankruptcy' },
+            { title: 'Home Loans', desc: 'Owner-occupier, investor, and self-employed home loan options.', url: BASE + 'products/home-loans.html', tags: 'home loan mortgage residential first home buyer refinance' },
+            { title: 'Commercial Property Loans', desc: 'Finance for offices, warehouses, retail and industrial property.', url: BASE + 'products/commercial-property-loans.html', tags: 'commercial property office warehouse retail industrial' },
+            { title: 'Bridging Finance', desc: 'Short-term property-secured loans for urgent or interim needs.', url: BASE + 'products/bridging-finance.html', tags: 'bridging short term property gap auction cash flow' },
+            { title: 'Privacy Policy', desc: 'How we collect and protect your personal information.', url: BASE + 'privacy-policy.html', tags: 'privacy policy data personal information' },
+            { title: 'Terms of Service', desc: 'Terms governing use of the Ascend Lending Partners website.', url: BASE + 'terms-of-service.html', tags: 'terms conditions service legal' },
+            { title: 'Contact Us', desc: 'Get in touch with a specialist within 2 business hours.', url: BASE + 'index.html#contact', tags: 'contact enquire phone email specialist' },
+            { title: 'How It Works', desc: 'Our 4-step process from enquiry to funding.', url: BASE + 'index.html#process', tags: 'how process steps apply approval funding' },
+            { title: 'Why Ascend', desc: 'Why businesses choose Ascend Lending Partners.', url: BASE + 'index.html#why-ascend', tags: 'why choose about us lenders panel' },
+        ];
+
+        function search(query) {
+            if (!query || query.length < 2) return [];
+            const q = query.toLowerCase();
+            return PAGES.filter(p =>
+                p.title.toLowerCase().includes(q) ||
+                p.desc.toLowerCase().includes(q) ||
+                p.tags.toLowerCase().includes(q)
+            ).slice(0, 6);
+        }
+
+        function renderResults(results, query) {
+            const el = document.getElementById('searchResults');
+            if (!el) return;
+            if (!query || query.length < 2) {
+                el.innerHTML = '<p class="search-overlay__hint">Start typing to search pages and products…</p>';
+                return;
+            }
+            if (results.length === 0) {
+                el.innerHTML = '<p class="search-overlay__hint">No results found. Try a different term.</p>';
+                return;
+            }
+            el.innerHTML = results.map(r => `
+                <a href="${r.url}" class="search-result">
+                    <div class="search-result__title">${r.title}</div>
+                    <div class="search-result__desc">${r.desc}</div>
+                </a>
+            `).join('');
+        }
+
+        function openSearch() {
+            const overlay = document.getElementById('searchOverlay');
+            const input   = document.getElementById('searchInput');
+            if (!overlay) return;
+            overlay.classList.add('is-open');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => input && input.focus(), 50);
+        }
+
+        function closeSearch() {
+            const overlay = document.getElementById('searchOverlay');
+            const input   = document.getElementById('searchInput');
+            const clear   = document.getElementById('searchClear');
+            const results = document.getElementById('searchResults');
+            if (!overlay) return;
+            overlay.classList.remove('is-open');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (input) input.value = '';
+            if (clear) clear.style.display = 'none';
+            if (results) results.innerHTML = '<p class="search-overlay__hint">Start typing to search pages and products…</p>';
+        }
+
+        // Wire up events after a tick to ensure DOM is ready
+        setTimeout(() => {
+            const btn      = document.getElementById('searchBtn');
+            const closeBtn = document.getElementById('searchClose');
+            const backdrop = document.getElementById('searchBackdrop');
+            const input    = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('searchClear');
+
+            if (btn)      btn.addEventListener('click', openSearch);
+            if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+            if (backdrop) backdrop.addEventListener('click', closeSearch);
+
+            if (input) {
+                input.addEventListener('input', () => {
+                    const q = input.value.trim();
+                    if (clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
+                    renderResults(search(q), q);
+                });
+            }
+            if (clearBtn) clearBtn.addEventListener('click', () => {
+                if (input) { input.value = ''; input.focus(); }
+                clearBtn.style.display = 'none';
+                renderResults([], '');
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeSearch();
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+            });
+        }, 100);
+    })();
 
     // ── Loaded ───────────────────────────────────────────────────
     document.body.classList.add('loaded');
