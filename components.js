@@ -24,7 +24,7 @@
       <a href="${B}index.html#why-ascend">Why Ascend</a>
       <a href="${B}index.html#contact">Contact</a>
     </nav>
-    <a href="${B}index.html#contact" class="btn btn--navy navbar__cta">Get Started</a>
+    <a href="${B}index.html#get-started" class="btn btn--navy navbar__cta">Get Started</a>
     <button class="navbar__search-btn" id="searchBtn" aria-label="Search" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
     </button>
@@ -68,7 +68,7 @@
         <div class="navbar__mega-col">
           <p class="navbar__mega-col-title">Not sure where to start?</p>
           <p style="font-size:0.8rem;color:var(--steel);line-height:1.65;margin-bottom:1rem;">Talk to a specialist who understands complex commercial lending.</p>
-          <a href="${B}index.html#contact" class="btn btn--navy">Talk to a Specialist</a>
+          <a href="${B}index.html#get-started" class="btn btn--navy">Talk to a Specialist</a>
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@
     <a href="${B}index.html#process" class="mobile-link">How It Works</a>
     <a href="${B}index.html#why-ascend" class="mobile-link">Why Ascend</a>
     <a href="${B}index.html#contact" class="mobile-link">Contact</a>
-    <a href="${B}index.html#contact" class="btn btn--navy mobile-cta">Get Started</a>
+    <a href="${B}index.html#get-started" class="btn btn--navy mobile-cta">Get Started</a>
   </div>
 </header>`;
 
