@@ -2688,3 +2688,10 @@ button {
 .form-disclaimer {
     margin-top: 1rem;
 }
+
+/* ── Re-assert mobile stacking (form-row must stay 1 column on small screens) ── */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
