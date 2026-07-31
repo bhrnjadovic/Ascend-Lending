@@ -320,6 +320,7 @@ button {
     display: flex;
     align-items: center;
     gap: 2rem;
+    position: relative;
 }
 
 /* ── Logo ── */
@@ -2063,12 +2064,15 @@ button {
         display: none;
     }
     .navbar__search-btn {
-        margin-left: auto;
-        margin-right: 0.6rem;
+        position: absolute;
+        right: 52px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
     }
     .navbar__hamburger {
         display: flex;
-        margin-left: 0;
+        margin-left: auto;
     }
     .navbar__mobile-menu {
         display: flex;
